@@ -21,24 +21,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void Update()
     {
-        if(player.position != oldPos)
-        {
-            oldPos = player.position;
-            Debug.Log(player.position.x);
-        }
 
         //rotate orientation witch is an empty object parented to the player object
-        Vector3 viewDir = player.position - new Vector3(-transform.position.x, player.position.y, -transform.position.z);
+        Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
+
         
 
-        // rotate the player object to follow the orientation object
-        //when w is pressed, rotate until "facing forword" relative to camera
-        // Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
-        // Vector3 inputDir = orientation.forward *moveInput.y + orientation.right * moveInput.x;
+        Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
+        Vector3 inputDir = orientation.forward *moveInput.y + orientation.right * moveInput.x;
 
-        // if (inputDir != Vector3.zero)
-        //     playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+        if (inputDir != Vector3.zero)
+            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
 
 
     }
