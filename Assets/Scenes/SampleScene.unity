@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 220847049}
   - component: {fileID: 220847050}
   - component: {fileID: 220847051}
+  - component: {fileID: 220847052}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -380,6 +381,21 @@ MonoBehaviour:
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotationSpeed: 5
   oldPos: {x: 0, y: 0, z: 0}
+--- !u!114 &220847052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220847048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42464c22210f2404b93a937f74ef983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UniversalMovement
+  moveSpeed: 7
+  orientation: {fileID: 1095341176}
+  moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

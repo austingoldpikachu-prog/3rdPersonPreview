@@ -14,6 +14,10 @@ public class UniversalMovement : MonoBehaviour
 
     public InputActionReference moveAction;
 
+    private Vector3 inputDir;
+    private Vector2 moveInput;
+
+
     Vector3 moveDirection;
 
     Rigidbody rb;
@@ -28,18 +32,14 @@ public class UniversalMovement : MonoBehaviour
 
     private void Update()
     {
-        MyInput();
+        Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
+        Vector3 inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x; 
+
     }
 
     private void FixedUpdate()
     {
         HandleMovement();
-    }
-
-    private void MyInput()
-    {
-        Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
-        Vector3 inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x; 
     }
 
     private void HandleMovement()
