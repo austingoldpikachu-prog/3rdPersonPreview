@@ -17,6 +17,12 @@ public class UniversalMovement : MonoBehaviour
     private Vector3 inputDir;
     private Vector2 moveInput;
 
+    public float groundDrag;
+
+    [Header("Ground Check")]
+    public float playerHeight;
+    public LayerMask whatIsGround;
+    bool grounded;
 
     Vector3 moveDirection;
 
@@ -32,14 +38,22 @@ public class UniversalMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector2 moveInput = moveAction.action.ReadValue<Vector2>();
-        Vector3 inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x; 
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
 
+        if(grounded)
+            rb.linearDamping = groundDrag;
+        else
+        rb.linearDamping = 0;
     }
 
     private void FixedUpdate()
     {
+        moveInput = moveAction.action.ReadValue<Vector2>();
+        inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x; 
+
         HandleMovement();
+
+
     }
 
     private void HandleMovement()

@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 126433399}
   - component: {fileID: 126433398}
   - component: {fileID: 126433397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,9 +393,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42464c22210f2404b93a937f74ef983c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UniversalMovement
-  moveSpeed: 7
+  moveSpeed: -1.7
   orientation: {fileID: 1095341176}
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  groundDrag: 3
+  playerHeight: 1
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +462,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -483,7 +488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25340125, y: -0.00000006553349, z: 0.000000017166567, w: 0.9673613}
+  m_LocalRotation: {x: 0.25340128, y: -0.00000003714168, z: 0.000000009729302, w: 0.9673613}
   m_LocalPosition: {x: 0, y: 4.07, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -749,7 +754,7 @@ GameObject:
   - component: {fileID: 623670885}
   - component: {fileID: 623670884}
   - component: {fileID: 623670883}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,7 +866,7 @@ GameObject:
   - component: {fileID: 672972972}
   - component: {fileID: 672972971}
   - component: {fileID: 672972970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -973,7 +978,7 @@ GameObject:
   - component: {fileID: 684438823}
   - component: {fileID: 684438822}
   - component: {fileID: 684438821}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,7 +1170,7 @@ GameObject:
   - component: {fileID: 1721245339}
   - component: {fileID: 1721245338}
   - component: {fileID: 1721245337}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1471,7 +1476,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60
+    FieldOfView: 65
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -1534,10 +1539,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.2
   m_Height: 0.8049863
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3818229, z: 0}
+  m_Center: {x: -0, y: 0.3818229, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
