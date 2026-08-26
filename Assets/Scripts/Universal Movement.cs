@@ -31,9 +31,9 @@ public class UniversalMovement : MonoBehaviour
     public float crouchYScale;
     public float startYScale;
 
-    [Header("Slope Handling")]
-    public float maxSlopeAngle;
-    private RaycastHit slopeHit;
+    // [Header("Slope Handling")]
+    // public float maxSlopeAngle;
+    // private RaycastHit slopeHit;
 
     [Header("Input Action Refrences")]
     public InputActionReference jumpAction;
@@ -66,7 +66,6 @@ public class UniversalMovement : MonoBehaviour
     grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
     rb.linearDamping = grounded ? groundDrag :0f;
 
-    // SlopeControl();
     }
 
     private void OnEnable()
@@ -96,26 +95,33 @@ public class UniversalMovement : MonoBehaviour
         moveInput = moveAction.action.ReadValue<Vector2>();
 
         HandleMovement();
+        // SlopeControl();
+
     }
 
     private void HandleMovement()
     {
         inputDir = orientation.forward * moveInput.y + orientation.right * moveInput.x; 
 
-        // if(onSlope())
+        // bool isOnSlope = onSlope();
+
+        // if(isOnSlope)
         // {
-        //     rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force);
+        //     rb.AddForce(GetSlopeMoveDirection(inputDir) * moveSpeed * 10f, ForceMode.Force);
 
         //     if(rb.linearVelocity.y > 0)
         //         rb.AddForce(Vector3.down *80f, ForceMode.Force);
         // }
 
         if(grounded)
+        {
             rb.AddForce(inputDir.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
         else
+        {
            rb.AddForce(inputDir.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-
-        //    rb.useGravity = !onSlope();
+        }
+        // rb.useGravity = !isOnSlope;
     }
 
     // private void SlopeControl()
@@ -199,8 +205,8 @@ public class UniversalMovement : MonoBehaviour
     //     return false;
     // }
 
-    // private Vector3 GetSlopeMoveDirection()
+    // private Vector3 GetSlopeMoveDirection(Vector3 direction)
     // {
-    //     return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    //     return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     // }
 }
